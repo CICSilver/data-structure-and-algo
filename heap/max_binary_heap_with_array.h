@@ -17,10 +17,6 @@ int heap_size;
 
 int CAPACITY;
 
-item* item_new(int val);
-
-int get_val_from_item(item* p_item);
-
 item* get_item_from_heap(int index);
 
 void heap_init(int size);
@@ -67,6 +63,8 @@ void swap(item* a, item* b);
 
 //将heap1拷贝到heap2，动态扩容的辅助方法
 void heapCopy(item** heap1, item** heap2);
+
+void printAll();
 
 
 #endif
