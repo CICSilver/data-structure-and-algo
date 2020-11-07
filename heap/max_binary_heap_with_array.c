@@ -7,11 +7,12 @@ item* item_new(int val)
     return new_item;
 }
 
-void heap_init(int size)
+item** heap_init(int size)
 {
     heap = (item **)calloc(size, sizeof(item *));
     CAPACITY = size;
     heap_size = 0;
+    return heap;
 }
 
 //返回堆大小
@@ -85,23 +86,21 @@ void sift_up(item** heap,int index)
 // 下沉，每次先取左子结点，因为在数组中左子结点下标小于右子结点
 // 先比较左右子结点， 取最大的子结点与当前值比较
 // 因为是最大堆，小的下沉，大的上浮
-void sift_down(item** heap, int index)
+void sift_down(item** heap, int index, int size)
 {
-    while(get_leftChild(index)<size())
+    //因为是数组实现，所以左子节点下标小于右子节点，所以靠左子节点判断是否越界
+    while(get_leftChild(index)<size)
     {
         int j = get_leftChild(index);
         //确保j是两个子结点中最大的
-        if(j+1 < size() && heap[j+1]->val > heap[j]->val)
+        if(j+1 < size && heap[j+1]->val > heap[j]->val)
         {
-            printf("j = %d\n",j);
             j++;
         }
+        //子结点比当前结点大，则交换
         if(heap[j]->val > heap[index]->val)
         {
-            printf("index = %d, j = %d\n",index, j);
             swap(heap[j], heap[index]);
-            // printf("%d, %d\n", heap[index]->val, heap[j]->val);
-            // printAll();
             index = j;
         }else
         {
@@ -125,7 +124,7 @@ item* popMax()
     heap[0] = heap[size()-1];
     heap[size()-1] = NULL;
     heap_size--;
-    sift_down(heap, 0);
+    sift_down(heap, 0, size());
     return ret;
 }
 
@@ -140,7 +139,7 @@ item* replace(item* new_item)
     item* ret = heap[0];
     // free(heap[0]);
     heap[0] = new_item;
-    sift_down(heap, 0);
+    sift_down(heap, 0, size());
     return ret;
 }
 
@@ -149,7 +148,7 @@ item** heapify(item** arr, int arrSize)
 {
     for(int i = (arrSize - 1)/2;i>=0;i--)
     {
-        sift_down(arr, i);
+        sift_down(arr, i, arrSize);
     }
     return arr;
 }

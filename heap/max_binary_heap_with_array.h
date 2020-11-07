@@ -19,7 +19,9 @@ int CAPACITY;
 
 item* get_item_from_heap(int index);
 
-void heap_init(int size);
+item** heap_init(int size);
+
+item* item_new(int val);
 
 //返回堆容量
 int capacity();
@@ -45,7 +47,7 @@ void add(item* new_item);
 //堆化插入后的新堆，新插入目标上浮
 void sift_up(item**, int index);
 
-void sift_down(item**, int index);
+void sift_down(item**, int index, int size);
 
 //查看堆中的最大值
 item* peekMax();
