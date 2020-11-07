@@ -2,3 +2,8 @@
 main.*
 *.out
 test
+*.gch
+./*.o
+./main.*
+./*.out
+./test
