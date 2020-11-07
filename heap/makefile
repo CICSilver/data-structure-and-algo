@@ -17,5 +17,5 @@ max_binary_heap_with_array.o:max_binary_heap_with_array.c max_binary_heap_with_a
 .PHONY:clean
 
 clean:
-	@rm -rf *.o
+	@rm -rf *.o *.out
 
