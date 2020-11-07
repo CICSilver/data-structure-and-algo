@@ -30,14 +30,12 @@ int main()
     heap_init(LEN);
     for(int i = 0;i<10;i++)
     {
-        add(item_new(i));
+        heap[i] = item_new(i);
     }
-    printAll();
-    printf("%d\n",popMax()->val);
-    printAll();
-    // setAll();
     // showAll();
-    // swap(heap[0], heap[1]);
-    // showAll();
-    
+    heap_size = LEN;
+    printAll();
+
+    heapify(heap, LEN);
+    printAll();
 }

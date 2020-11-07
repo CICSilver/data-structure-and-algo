@@ -7,16 +7,6 @@ item* item_new(int val)
     return new_item;
 }
 
-// item* get_item_from_heap(int index)
-// {
-//     if(index>=0 && index <capacity)
-//     {
-//         return heap[index];
-//     }
-//     printf("访问越界!\n");
-//     return NULL;
-// }
-
 void heap_init(int size)
 {
     heap = (item **)calloc(size, sizeof(item *));
@@ -75,13 +65,13 @@ void add(item* new_item)
     }
     heap[heap_size++] = new_item;
     int cur = size()-1;
-    sift_up(cur);
+    sift_up(heap, cur);
 }
 
 // 堆化插入后的新堆，新插入目标上浮
 // 思路：重复和父结点比较，大于父结点则和父结点交换，小于父结点即已完成
 // 因为是最大堆，小的下沉，大的上浮
-void sift_up(int index)
+void sift_up(item** heap,int index)
 {
     int parent = get_parent(index);
     while (index > 0 && heap[index]->val > heap[parent]->val)
@@ -95,7 +85,7 @@ void sift_up(int index)
 // 下沉，每次先取左子结点，因为在数组中左子结点下标小于右子结点
 // 先比较左右子结点， 取最大的子结点与当前值比较
 // 因为是最大堆，小的下沉，大的上浮
-void sift_down(int index)
+void sift_down(item** heap, int index)
 {
     while(get_leftChild(index)<size())
     {
@@ -135,7 +125,7 @@ item* popMax()
     heap[0] = heap[size()-1];
     heap[size()-1] = NULL;
     heap_size--;
-    sift_down(0);
+    sift_down(heap, 0);
     return ret;
 }
 
@@ -143,18 +133,33 @@ item* popMax()
 //调用后需要free!!
 item* replace(item* new_item)
 {
+    if(new_item == NULL)
+    {
+        return NULL;
+    }
     item* ret = heap[0];
     // free(heap[0]);
     heap[0] = new_item;
-    sift_down(0);
+    sift_down(heap, 0);
     return ret;
 }
 
 //堆化一个元素数组
-void headpiy(item** arr);
+item** heapify(item** arr, int arrSize)
+{
+    for(int i = (arrSize - 1)/2;i>=0;i--)
+    {
+        sift_down(arr, i);
+    }
+    return arr;
+}
 
 void swap(item* a, item* b)
 {
+    if(a == NULL || b == NULL)
+    {
+        return;
+    }
     int temp = a->val;
     a->val = b->val;
     b->val = temp;

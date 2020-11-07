@@ -43,9 +43,9 @@ int get_rightChild(int index);
 void add(item* new_item);
 
 //堆化插入后的新堆，新插入目标上浮
-void sift_up(int index);
+void sift_up(item**, int index);
 
-void sift_down(int index);
+void sift_down(item**, int index);
 
 //查看堆中的最大值
 item* peekMax();
@@ -57,7 +57,7 @@ item* popMax();
 item* replace(item* new_item);
 
 //堆化一个元素数组
-void headpiy(item** arr);
+item** heapify(item** arr, int arrSize);
 
 void swap(item* a, item* b);
 
