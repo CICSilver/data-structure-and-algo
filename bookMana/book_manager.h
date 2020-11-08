@@ -27,6 +27,7 @@ typedef struct _node
     struct _node* next;
 }node;
 
+
 //返回一个图书
 book* book_new(char* ISBN, char* book_name, char* author, int page_size, char* publish, double price);
 
@@ -82,6 +83,11 @@ int isExsist(book* p_book, node* temp_head);
 int getSize(node* temp_head);
 
 void book_copy(book* old_book, book* new_book);
+
+//返回链表头
+node* getHead();
+//返回链表尾
+node* getTail();
 
 
 #endif

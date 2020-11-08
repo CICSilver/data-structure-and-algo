@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "file_opera.h"
 #include "book_manager.h"
 
 #define DEBUG
@@ -22,6 +20,7 @@ book *book_new(char *ISBN, char *book_name, char *author, int page_size, char *p
 
 void add(book *p_book)
 {
+    isUpdated = 1;
     add_front(p_book, head);
 }
 
@@ -67,6 +66,7 @@ void add_front_by_bookInfo(book *new_book, char *book_name, char *author)
 
 void add_tail(book* p_book, node* p_node)
 {
+    isUpdated = 1;
     node* new_node = (node *)calloc(1, sizeof(node));
     new_node->cur = p_book;
     //默认在末尾插入
@@ -227,6 +227,7 @@ void destroy_search_list(node *search_res_head)
 
 void del(node *node)
 {
+    isUpdated = 1;
     if (node->prev == NULL)
     {
         head = node->next;
@@ -308,6 +309,7 @@ int update_helper_func(node *search_head, book *update_book)
 //若查询结果不唯一则放弃修改
 int update(book *update_book, char *ISBN, char *book_name, char *author, int opt)
 {
+    isUpdated = 1;
     node *search_head;
     switch (opt)
     {
@@ -381,15 +383,13 @@ void print_with_head(node* nodeHead)
     }
 }
 
-// int main1()
-// {
-//     book *b1 = book_new("123", "从入门到入坟", "爷", 20, "无", 20.0);
-//     book *b2 = book_new("1234", "打发手动阀", "爷", 20, "调度", 20.0);
-//     book *b3 = book_new("12345", "从入门到入坟", "爷1", 200, "aaa", 200.0);
-//     add(b1);
-    
-//     add(b2);
-//     add(b3);
-//     printAll();
-//     printf("%d\n",getSize(head));
-// }
+//返回链表头
+node* getHead()
+{
+    return head;
+}
+//返回链表尾
+node* getTail()
+{
+    return tail;
+}

@@ -1,4 +1,5 @@
 #include "book_manager.h"
+#include "file_opera.h"
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
@@ -113,20 +114,24 @@ void test_add_duplicate()
 
 int main()
 {
-    Book* p_book1 = book_new("8710772364053", "插入测试一", "插入作者0", 300, "插入测试出版社", 543.0);
-    Book* p_book2 = book_new("6588532536940", "插入测试二", "插入作者1", 340, "插入测试出版社", 7654.0);
-
-    test_add();
+    Book* p_book1 = book_new("9123609048352", "文件测试一", "文件作者0", 888, "文件测试出版社", 888.0);
+    // Book* p_book2 = book_new("6588532536940", "插入测试二", "插入作者1", 340, "插入测试出版社", 7654.0);
+    init_with_file();
+    // test_add();
     printAll();
+    // printf("size of list = %d\n", getSize(getHead()));
     printf("==================================插入测试=========================================\n");
-    // test_search();
-    test_add_front(p_book1);
-    test_add_tail(p_book2);
-    printAll();
-    printf("==================================同作者所有作品搜索测试=========================================\n");
-    test_add_duplicate();
-    print_with_head(search_by_author("重名作者0", 0));
-    printf("==================================修改测试=========================================\n");
-    test_update();
-    printAll();
+    // // test_search();
+    // test_add_front(p_book1);
+    // test_add_tail(p_book2);
+    // printAll();
+    // printf("==================================同作者所有作品搜索测试=========================================\n");
+    // test_add_duplicate();
+    // print_with_head(search_by_author("重名作者0", 0));
+    // printf("==================================修改测试=========================================\n");
+    // test_update();
+    // printAll();
+    // add(p_book1);
+    save_books_to_file();
+    // clean_file();
 }  
