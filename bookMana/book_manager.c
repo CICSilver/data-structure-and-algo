@@ -3,8 +3,8 @@
 
 #define DEBUG
 
-node *head = NULL;
-node *tail = NULL;
+static node *head = NULL;
+static node *tail = NULL;
 
 book *book_new(char *ISBN, char *book_name, char *author, int page_size, char *publish, double price)
 {
