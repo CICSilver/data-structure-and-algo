@@ -3,9 +3,10 @@
 #define LEN 10
 item** getArr(item** arr,int arrSize)
 {
+    int nums[] = {5,1,3,12,0,8,7,15,9,6};
     for(int i = 0;i<arrSize;++i)
     {
-        arr[i] = item_new(i);
+        arr[i] = item_new(nums[i]);
     }
     return arr;
 }
@@ -16,18 +17,12 @@ item** getArr(item** arr,int arrSize)
 //再把[0,arrSize - count)堆化，继续重复上述过程，即可完成排序
 item** heap_sort(item** arr, int arrSize)
 {
-    printf("1\n");
+    // printf("1\n");
     arr = heapify(arr, arrSize);
     for(int i = 1;i <arrSize; i++)
     {
-        // printf("调换之前的数组：");
-        // showAll(arr);
         swap(arr[0], arr[arrSize - i]);
-        // printf("调换之后的数组：", i);
-        // showAll(arr);
         heapify(arr, arrSize - i);
-        // printf("堆化后的数组：  ");
-        // showAll(arr);
     }
     return arr;
 }
@@ -45,7 +40,7 @@ int main()
 {
     item** arr = heap_init(LEN);
     arr = getArr(arr, LEN);
-    showAll(arr);
+    // showAll(arr);
     arr = heap_sort(arr, LEN);
     showAll(arr);
 }

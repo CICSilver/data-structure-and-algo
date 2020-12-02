@@ -40,8 +40,8 @@ int stack_init(int stack_size)
     {
         return -1;
     }
-    stack1 = (item *)calloc(stack_size, sizeof(item));
-    stack2 = (item *)calloc(stack_size, sizeof(item));
+    stack1 = (item **)calloc(stack_size, sizeof(item *));
+    stack2 = (item **)calloc(stack_size, sizeof(item *));
     STACK_SIZE = stack_size;
     return 1;
 }

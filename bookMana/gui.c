@@ -65,7 +65,7 @@ void test_add_front(window_and_view *wv)
     Book *p_book1 = book_new("9123609048352", "文件测试一", "文件作者0", 888, "文件测试出版社", 888.0);
     add_front_by_bookInfo(p_book1, "测试书名六", "作者5");
     g_print("inserting...\n");
-    wv->view = create_view_and_model();
+    // wv->view = create_view_and_model();
     while (gtk_events_pending())
     {
         gtk_main_iteration();
