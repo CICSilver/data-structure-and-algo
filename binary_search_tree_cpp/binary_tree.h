@@ -30,6 +30,10 @@ private:
         {
             return this->val;
         }
+        int GetN()
+        {
+            return this->N;
+        }
         ~Node(){};
 
         friend class BinarySearchTree;

@@ -22,12 +22,12 @@ int main()
     // {
     //     cout << n->GetKey() << " : " << n->GetVal() << endl;
     // }
-    // cout << "====================== InorderTraversal ======================" << endl;
-    // auto res1 = tree.InorderTraversal();
-    // for (auto const &n : res1)
-    // {
-    //     cout << n->GetKey() << " : " << n->GetVal() << endl;
-    // }
+    cout << "====================== InorderTraversal ======================" << endl;
+    auto res1 = tree.InorderTraversal();
+    for (auto const &n : res1)
+    {
+        cout << n->GetKey() << " : " << n->GetVal() << ", N = " << n->GetN() << endl;
+    }
     // cout << "====================== PostorderTraversal ======================" << endl;
     // auto res2 = tree.PostorderTraversal();
     // for (auto const &n : res2)
