@@ -2,6 +2,7 @@
 #define _BINARY_TREE_H
 
 #include <iostream>
+#include <string>
 #include <vector>
 #include <iterator>
 
@@ -193,6 +194,16 @@ private:
 public:
     BinarySearchTree(){};
     BinarySearchTree(BinarySearchTree<K, V> *tree){};
+    /** 算术表达式的搜索树创建要考虑 算术运算符的权值
+     * 3 + 5/2 -----> 5/
+     * () 
+     * * /
+     * + -
+     * 去空格 
+     */
+    BinarySearchTree(std::string str){
+
+    };
     ~BinarySearchTree(){};
 
     int Size()
