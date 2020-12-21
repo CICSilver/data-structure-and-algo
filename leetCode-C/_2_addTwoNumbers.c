@@ -7,8 +7,6 @@ typedef struct ListNode {
     struct ListNode *next;
 }node;
 
-
-
 struct ListNode* addTwoNumbers1(struct ListNode* l1, struct ListNode* l2)
 {
     int size = 0;
