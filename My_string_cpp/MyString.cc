@@ -5,6 +5,8 @@ std::ostream &operator<<(std::ostream &os, const MyString &str)
     return std::__ostream_insert(os, str.Data(), str.Size());
 }
 
+MyString operator+(const MyString &s1, const MyString &s2);
+
 bool MyString::CheckCapacity(size_t _size)
 {
     return _size >= Capacity();
@@ -30,7 +32,7 @@ char *MyString::Grow(size_t minCapacity)
     return str_;
 }
 
-MyString MyString::Append(const char *s)
+MyString& MyString::Append(const char *s)
 {
     size_t s_len = strlen(s);
     EnsureGrow(s_len + Capacity());
@@ -39,7 +41,7 @@ MyString MyString::Append(const char *s)
     return *this;
 }
 
-MyString MyString::Append(const char s)
+MyString& MyString::Append(const char s)
 {
     EnsureGrow(1 + Capacity());
     *(this->str_ + Size()) = s;
@@ -73,7 +75,6 @@ MyString &MyString::Insert(size_t pos, const char *c)
     EnsureGrow(newLen);
     char s_temp[newLen] = {0};
 
-    // printf("1");
     memcpy(s_temp, this->str_, pos);
     memcpy(s_temp + pos, c, c_len);
     memcpy(s_temp + pos + c_len, this->str_ + pos, this->Size() - pos);
@@ -211,4 +212,19 @@ size_t MyString::RFindNotSubStr(const char *s, size_t spos, size_t epos) const
     }
 
     return res_pos;
+}
+
+MyString &MyString::Replace(size_t pos, size_t len, MyString &str)
+{
+    // TODO
+}
+
+char &MyString::operator[](size_t pos)
+{
+    return this->str_[pos];
+}
+
+void Clear()
+{
+    // TODO
 }
