@@ -1,10 +1,13 @@
 #include "LinkedList.h"
 
-LinkedList::LinkedList() {}
+template<typename T>
+LinkedList<T>::LinkedList() {}
 
-LinkedList::~LinkedList() {}
+template<typename T>
+LinkedList<T>::~LinkedList() {}
 
-LinkedList::Node *LinkedList::NodeAt(int pos)
+template<typename T>
+LinkedList<T>::Node *LinkedList<T>::NodeAt(int pos)
 {
     if (!isPosValid(pos))
     {
@@ -18,7 +21,8 @@ LinkedList::Node *LinkedList::NodeAt(int pos)
     return temp;
 }
 
-void LinkedList::InsertAt(int pos, int val)
+template<typename T>
+void LinkedList<T>::InsertAt(int pos, int val)
 {
     // 获取插入位置的前一个位置
     if (pos == 0)
@@ -39,7 +43,8 @@ void LinkedList::InsertAt(int pos, int val)
     size_++;
 }
 
-void LinkedList::DeleteAt(int pos)
+template<typename T>
+void LinkedList<T>::DeleteAt(int pos)
 {
     if (pos == 0)
     {
@@ -64,7 +69,8 @@ void LinkedList::DeleteAt(int pos)
 
     size_--;
 }
-int LinkedList::At(int pos)
+template<typename T>
+int LinkedList<T>::At(int pos)
 {
     if (pos == size_)
     {
@@ -74,7 +80,8 @@ int LinkedList::At(int pos)
     return temp->GetVal();
 }
 
-void LinkedList::Reverse()
+template<typename T>
+void LinkedList<T>::Reverse()
 {
     if (size_ <= 1)
     {

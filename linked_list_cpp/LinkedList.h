@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 
+template<typename T>
 class LinkedList
 {
 public:
@@ -66,7 +67,7 @@ private:
     class Node
     {
     public:
-        Node(int val = 0, Node *next = nullptr) : val_(val), next_(next){};
+        Node(T val = 0, Node *next = nullptr) : val_(val), next_(next){};
         Node(const Node &node) : val_(0)
         {
             Node temp(node.val_, node.next_);
@@ -78,7 +79,7 @@ private:
             delete next_;
             next_ = nullptr;
         };
-        int GetVal()
+        T GetVal()
         {
             return this->val_;
         }
@@ -86,10 +87,10 @@ private:
         {
             return this->next_;
         }
-        int SetNext(Node *);
+        void SetNext(Node *);
 
     private:
-        int val_;
+        T val_;
         Node *next_ = nullptr;
         friend class LinkedList;
     };
